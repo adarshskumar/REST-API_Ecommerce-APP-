@@ -1,4 +1,4 @@
-errorHandler((err,req,res,next)=>{
+async function errorHandler(err,req,res,next){
     if(typeof err==="string"){
         return res.status(400).json({message:err.message})
     }
@@ -10,8 +10,9 @@ errorHandler((err,req,res,next)=>{
     }
 
         return res.status(500).json({message:err.message})
-})
+}
 
-module.exports(
-    errorHandler
-)
+module.exports= {
+  errorHandler
+}
+    

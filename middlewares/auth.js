@@ -1,6 +1,6 @@
-const jwt = required('jsonwebtoken')
+const jwt = require('jsonwebtoken')
 
-authenticateToken((req, res, next) => {
+async function authenticateToken(req, res, next) {
     const authHeader = req.headers['authorization']     // variable for authorization
     const token = authHeader && authHeader.split(' ')[1]
 
@@ -11,13 +11,13 @@ authenticateToken((req, res, next) => {
         req.user = user;
         next();
     })
-})
+}
 
-generateAccessToken((username) => {
+async function generateAccessToken(username) {
     return jwt.sign({ data: username }, "Snippet_SecretKey", {
         expireIn: "1h",
     })
-})
+}
 
 module.exports = {
     authenticateToken,

@@ -17,15 +17,15 @@ mongoose.connect(dbConfig.db,{
     console.log('Database Connected')
 },(error)=>{
     console.log('Database cant be connected: '+error)
-})
+});
 
 auth.authenticateToken.unless=unless;
 app.use(
     auth.authenticateToken.unless({
         path: [
-            { url: 'users/login', methods:["POST"]},
-            { url: 'users/register', methods: ["POST"]}
-        ]
+            { url: '/users/login', methods:["POST"]},
+            { url: '/users/register', methods: ["POST"]},
+        ],
     })
 );
 
