@@ -13,7 +13,7 @@ mongoose.Promise = global.Promise // we need to set mongoose a global mode to us
 mongoose.connect(dbConfig.db,{
     useNewUrlParser:true,
     useUnifiedTopology:true
-}).then((e)=>{
+}).then(()=>{
     console.log('Database Connected')
 },(error)=>{
     console.log('Database cant be connected: '+error)
